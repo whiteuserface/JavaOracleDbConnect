@@ -19,21 +19,22 @@ public class ExamSelect03 {
 			System.out.println("클래스 로딩 성공!");
 			
 			StringBuffer sql = new StringBuffer();
-			sql.append("select \"NAME\", \"NUM\", \"BIRTH\" , \"ADDRESS\"  from \"MYDB\"");
+			sql.append("select \"NUM\", \"NAME\",  \"BIRTH\" , \"ADDRESS\"  from \"MYDB\"");
 			sql.append(" where \"NAME\"=?");//바인딩 변수
 			
-			String searchName = "김동인";
+			String searchName = "김동인"; //찾을 이름을 변수에 저장
 			
 			conn = DriverManager.getConnection(
 					url, 
 					user, 
 					password);
 			pstmt = conn.prepareStatement(sql.toString());
-			pstmt.setString(1, searchName); //바인딩 변수에 set함.
+			
+			pstmt.setString(1, searchName); //첫번째 ?에 넣을 값을 입력하는 구문 (indexNum, variable)
 			
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				System.out.println(rs.getLong(1));
+				System.out.println(rs.getLong(1)); //index번호로 검색
 				System.out.println(rs.getString(2));
 				System.out.println(rs.getDate(3));
 				System.out.println(rs.getString(4));

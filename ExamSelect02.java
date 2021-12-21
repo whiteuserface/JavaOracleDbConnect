@@ -19,7 +19,7 @@ public class ExamSelect02 {
 			System.out.println("클래스 로딩 성공!");
 			
 			StringBuffer sql = new StringBuffer();
-			sql.append("select count(*) from \"INFO\"");
+			sql.append("select count(*) from \"MYDB\"");
 			conn = DriverManager.getConnection(
 					url, 
 					user, 
